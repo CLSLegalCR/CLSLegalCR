@@ -1,0 +1,269 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Contact | CLS Caribe Legal Services"
+  description="Contact us for legal services in Puerto Viejo and Southern Caribbean Costa Rica. Phone: +506 6056-5736."
+  lang="en"
+>
+  <Header lang="en" />
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>Contact Us</h1>
+        <p>We're here to help</p>
+      </div>
+    </section>
+
+    <section class="contact-content">
+      <div class="container">
+        <div class="contact-grid">
+
+          <div class="contact-info">
+            <h2>Contact Information</h2>
+
+            <div class="info-item">
+              <h3>Phone</h3>
+              <a href="tel:+50660565736">+506 6056-5736</a>
+            </div>
+
+            <div class="info-item">
+              <h3>Address</h3>
+              <p>
+                Century 21 Caribe Real Estate<br />
+                Across from Restaurante Rincón Porteño<br />
+                Puerto Viejo de Talamanca<br />
+                Limón, Costa Rica
+              </p>
+            </div>
+
+            <div class="info-item">
+              <h3>Hours</h3>
+              <p>
+                Monday - Friday<br />
+                9:00 AM – 5:00 PM
+              </p>
+            </div>
+
+            <div class="info-item">
+              <h3>Social Media</h3>
+              <a href="https://instagram.com/cls_legal_cr" target="_blank" rel="noopener">
+                @cls_legal_cr on Instagram
+              </a>
+            </div>
+
+            <!-- Map -->
+            <div class="map-container">
+              <h3>Location</h3>
+              <div class="map-wrapper">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1000!2d-82.72319132061922!3d9.642820078432687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOcKwMzgnMzQuMiJOIDgywrA0MycyMy41Ilc!5e0!3m2!1sen!2scr!4v1700000000000!5m2!1sen!2scr"
+                  width="100%"
+                  height="200"
+                  style="border:0; border-radius: 8px;"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-section">
+            <h2>Send Us a Message</h2>
+            <form class="contact-form" name="contact-en" method="POST" data-netlify="true">
+              <input type="hidden" name="form-name" value="contact-en" />
+
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone (optional)</label>
+                <input type="tel" id="phone" name="phone" />
+              </div>
+
+              <div class="form-group">
+                <label for="service">Service of Interest</label>
+                <select id="service" name="service">
+                  <option value="">Select...</option>
+                  <option value="immigration">Immigration</option>
+                  <option value="real-estate">Real Estate</option>
+                  <option value="corporate">Corporate Law</option>
+                  <option value="consulting">Business Consulting</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+              </div>
+
+              <button type="submit" class="submit-button">Send Message</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang="en" />
+</BaseLayout>
+
+<style>
+  .page-header {
+    background: #282C2D;
+    color: white;
+    padding: 7rem 0 3rem;
+    text-align: center;
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #DEAA09;
+  }
+
+  .page-header p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .contact-content {
+    padding: 3rem 0;
+    background: transparent;
+  }
+
+  .contact-content > .container {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .contact-info h2,
+  .contact-form-section h2 {
+    color: #282C2D;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .info-item {
+    margin-bottom: 1.5rem;
+  }
+
+  .info-item h3 {
+    color: #DEAA09;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .info-item p,
+  .info-item a {
+    color: #4a4a4a;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .info-item a:hover {
+    color: #DEAA09;
+  }
+
+  .map-container {
+    margin-top: 1.5rem;
+  }
+
+  .map-container h3 {
+    color: #DEAA09;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+
+  .map-wrapper {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .contact-form {
+    background: #f8f8f8;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    color: #2d2d2d;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #DEAA09;
+    box-shadow: 0 0 0 3px rgba(222, 170, 9, 0.1);
+  }
+
+  .submit-button {
+    background: #DEAA09;
+    color: #282C2D;
+    padding: 0.875rem 2rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(222, 170, 9, 0.4);
+  }
+</style>

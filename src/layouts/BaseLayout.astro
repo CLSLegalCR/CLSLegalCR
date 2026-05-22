@@ -1,0 +1,153 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  lang?: string;
+}
+
+const { title, description, lang = 'es' } = Astro.props;
+const siteUrl = 'https://clslegalcr.com';
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_CR' : 'en_US'} />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LegalService",
+      "name": "CLS Caribe Legal Services",
+      "description": "Legal and strategic solutions for businesses and individuals in Southern Caribbean Costa Rica",
+      "url": siteUrl,
+      "telephone": "+506 60565736",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Century 21 Caribe Real Estate, frente Restaurante Rincón Porteño",
+        "addressLocality": "Puerto Viejo de Talamanca",
+        "addressRegion": "Limón",
+        "addressCountry": "CR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 9.6541,
+        "longitude": -82.7554
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "17:00"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Southern Caribbean Costa Rica"
+      },
+      "knowsLanguage": ["Spanish", "English"],
+      "priceRange": "$$"
+    })} />
+
+    <title>{title}</title>
+
+    <style is:global>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.0625rem;
+        line-height: 1.7;
+        color: #282C2D;
+        background: linear-gradient(180deg, #FAFDFE 0%, #f1f3f4 50%, #e5e7e9 100%);
+        background-attachment: fixed;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: #DEAA09;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      a:hover {
+        color: #b8900a;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      /* Scroll animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .fade-in-delay-1 { transition-delay: 0.1s; }
+      .fade-in-delay-2 { transition-delay: 0.2s; }
+      .fade-in-delay-3 { transition-delay: 0.3s; }
+      .fade-in-delay-4 { transition-delay: 0.4s; }
+
+      /* Subtle background pattern */
+      .pattern-bg {
+        background-image:
+          radial-gradient(circle at 20% 50%, rgba(222, 170, 9, 0.03) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(222, 170, 9, 0.03) 0%, transparent 50%),
+          radial-gradient(circle at 40% 80%, rgba(222, 170, 9, 0.02) 0%, transparent 50%);
+      }
+    </style>
+
+    <!-- Scroll animation script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const observerOptions = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+          observer.observe(el);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

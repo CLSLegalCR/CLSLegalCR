@@ -1,0 +1,96 @@
+---
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'es' } = Astro.props;
+const isSpanish = lang === 'es';
+---
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-info">
+        <img src="/images/cls-logo.webp" alt="CLS Caribe Legal Services" class="footer-logo" />
+        <p>
+          Century 21 Caribe Real Estate<br />
+          Frente Restaurante Rincón Porteño<br />
+          Puerto Viejo de Talamanca, Limón<br />
+          Costa Rica
+        </p>
+      </div>
+      <div class="footer-contact">
+        <h4>{isSpanish ? 'Contacto' : 'Contact'}</h4>
+        <p>
+          <a href="tel:+50660565736">+506 6056-5736</a><br />
+          <a href="https://instagram.com/cls_legal_cr" target="_blank" rel="noopener">@cls_legal_cr</a>
+        </p>
+        <p class="hours">
+          {isSpanish ? 'Lunes a Viernes' : 'Monday - Friday'}<br />
+          9:00 AM – 5:00 PM
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {new Date().getFullYear()} CLS Caribe Legal Services. {isSpanish ? 'Todos los derechos reservados.' : 'All rights reserved.'}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background: #282C2D;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 2.5rem 0 1.5rem;
+    margin-top: 0;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-logo {
+    height: 50px;
+    width: auto;
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    color: #DEAA09;
+  }
+
+  p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  a {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  a:hover {
+    color: #DEAA09;
+  }
+
+  .hours {
+    margin-top: 1rem;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(222, 170, 9, 0.3);
+    padding-top: 1.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 600px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

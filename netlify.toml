@@ -1,0 +1,10 @@
+# Netlify build config for CLS Caribe Legal (Astro static site)
+# Auto-deploy: connect github.com/SephTaylor/CLSLegalCR to a Netlify site;
+# every push to main triggers this build.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"

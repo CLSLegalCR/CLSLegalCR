@@ -4,4 +4,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://clslegalcr.com/sitemap.xml
+Sitemap: https://clslegalcr.com/sitemap-index.xml
